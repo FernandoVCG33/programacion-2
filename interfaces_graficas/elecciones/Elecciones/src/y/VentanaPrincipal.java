@@ -1,23 +1,28 @@
 package y;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.GridLayout;
-import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 public class VentanaPrincipal extends JFrame {
-
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -43,90 +48,101 @@ public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		setTitle("Elecciones 2025");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 704, 521);
+		setBounds(100, 100, 692, 394);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panePrincipal = new JPanel();
-		panePrincipal.setBackground(new Color(0, 128, 128));
-		contentPane.add(panePrincipal, BorderLayout.CENTER);
-		panePrincipal.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lbElecciones2025 = new JLabel("Elecciones 2025");
-		lbElecciones2025.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 13));
-		lbElecciones2025.setHorizontalAlignment(SwingConstants.CENTER);
-		panePrincipal.add(lbElecciones2025, BorderLayout.NORTH);
+		JPanel panPrincipal = new JPanel();
+		panPrincipal.setBackground(new Color(64, 224, 208));
+		contentPane.add(panPrincipal, BorderLayout.CENTER);
+		panPrincipal.setLayout(new BorderLayout(0, 0));
 		
-		JPanel paneMenu = new JPanel();
-		panePrincipal.add(paneMenu, BorderLayout.CENTER);
-		paneMenu.setLayout(new GridLayout(1, 1, 5, 5));
+		JLabel lblTitulo = new JLabel("Elecciones 2025");
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		panPrincipal.add(lblTitulo, BorderLayout.NORTH);
 		
-		JPanel panel_3 = new JPanel();
-		paneMenu.add(panel_3);
-		panel_3.setLayout(new GridLayout(6, 1, 3, 3));
+		JPanel panMenu = new JPanel();
+		panPrincipal.add(panMenu, BorderLayout.CENTER);
+		panMenu.setLayout(new GridLayout(1, 3, 5, 5));
 		
-		JButton btnNewButton_1 = new JButton("Registrar partido");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JPanel panOpciones1 = new JPanel();
+		panMenu.add(panOpciones1);
+		panOpciones1.setLayout(new GridLayout(6, 1, 0, 0));
+		
+		JButton btnNuevoPartido = new JButton("Nuevo partido");
+		btnNuevoPartido.addActionListener(new ActionListener() {
+			
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaRegistrarPartido frame = new VentanaRegistrarPartido();
+				// TODO Auto-generated method stub
+				VentanaRegistroPartido frame = new VentanaRegistroPartido();
+				frame.setVisible(true);
+			}
+		});;
+		btnNuevoPartido.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		panOpciones1.add(btnNuevoPartido);
+		
+		JButton btn_recinto = new JButton("Nuevo recinto");
+		btn_recinto.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		panOpciones1.add(btn_recinto);
+		btn_recinto.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaRegistroRecinto frame = new VentanaRegistroRecinto();
 				frame.setVisible(true);
 			}
 		});
-		panel_3.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Registrar reciente");
-		panel_3.add(btnNewButton_2);
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		panOpciones1.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("New button");
-		panel_3.add(btnNewButton_3);
+		panOpciones1.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("New button");
-		panel_3.add(btnNewButton_4);
+		panOpciones1.add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("New button");
-		panel_3.add(btnNewButton_5);
+		panOpciones1.add(btnNewButton_5);
+		
+		JPanel panOpciones2 = new JPanel();
+		panMenu.add(panOpciones2);
+		panOpciones2.setLayout(new GridLayout(6, 1, 0, 0));
 		
 		JButton btnNewButton_6 = new JButton("New button");
-		panel_3.add(btnNewButton_6);
+		panOpciones2.add(btnNewButton_6);
 		
-		JPanel panel_2 = new JPanel();
-		paneMenu.add(panel_2);
-		panel_2.setLayout(new GridLayout(6, 1, 5, 5));
+		JButton btnNewButton_1_1 = new JButton("New button");
+		panOpciones2.add(btnNewButton_1_1);
 		
-		JButton btnNewButton_1_1 = new JButton("Registrar partido");
-		panel_2.add(btnNewButton_1_1);
-		
-		JButton btnNewButton_2_1 = new JButton("Registrar reciente");
-		panel_2.add(btnNewButton_2_1);
+		JButton btnNewButton_2_1 = new JButton("New button");
+		panOpciones2.add(btnNewButton_2_1);
 		
 		JButton btnNewButton_3_1 = new JButton("New button");
-		panel_2.add(btnNewButton_3_1);
+		panOpciones2.add(btnNewButton_3_1);
 		
-		JButton btnNewButton_4_1 = new JButton("New button");
-		panel_2.add(btnNewButton_4_1);
+		JPanel panImagen = new JPanel();
+		JLabel lblImagen  =  new JLabel();
+		Icon icono =  new ImageIcon("BG.jpg");
+		panImagen.setLayout(new BorderLayout(0, 0));
+		lblImagen.setIcon(icono);
+		panImagen.add(lblImagen);
+		panMenu.add(panImagen);
 		
-		JButton btnNewButton_5_1 = new JButton("New button");
-		panel_2.add(btnNewButton_5_1);
+		JPanel panBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panPrincipal.add(panBoton, BorderLayout.SOUTH);
 		
-		JButton btnNewButton_6_1 = new JButton("New button");
-		panel_2.add(btnNewButton_6_1);
-		
-		JPanel panel_1 = new JPanel();
-		paneMenu.add(panel_1);
-		
-		JPanel PaneVotos = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) PaneVotos.getLayout();
-		flowLayout.setAlignment(FlowLayout.RIGHT);
-		PaneVotos.setBackground(new Color(0, 255, 0));
-		panePrincipal.add(PaneVotos, BorderLayout.SOUTH);
-		
-		JButton btnNewButton = new JButton("Registrar votos");
-		btnNewButton.setBackground(new Color(128, 128, 255));
-		btnNewButton.setHorizontalAlignment(SwingConstants.RIGHT);
-		PaneVotos.add(btnNewButton);
+		JButton btnRegistrarVoto = new JButton("Registrar Votos");
+		panBoton.add(btnRegistrarVoto);
 	}
+
 
 }
