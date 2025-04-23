@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,9 +72,25 @@ public class VentanaRegistroPartido extends JFrame {
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		panPrincipal.add(panBotones, BorderLayout.SOUTH);
 		
-		JButton btnAceptar = new JButton("Aceptar");
-		panBotones.add(btnAceptar);
-		
+		JButton btnregistrar = new JButton("Resgistrar");
+		panBotones.add(btnregistrar);
+		btnregistrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String sigla= txtSigla.getText() ;
+				String nombre= txtNombre.getText() ;
+				PartidoPolitico pp = new PartidoPolitico(sigla,nombre);
+				if(pp.registrarPartidoTxt(Archivos.archivoPartidos)) {
+					JOptionPane.showMessageDialog(btnregistrar, "Se registro correctamente");
+					txtNombre.setText("");
+			        txtSigla.setText("");
+				}
+				else {
+					JOptionPane.showMessageDialog(btnregistrar, "Ocurrio un error (intentaste registrar a evo.. )");
+				}
+			}
+		});
 		JButton btnLimpiar = new JButton("Limpiar");
 		panBotones.add(btnLimpiar);
 		/*limpiar*/

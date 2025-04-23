@@ -74,7 +74,7 @@ public class VentanaPrincipal extends JFrame {
 		panMenu.add(panOpciones1);
 		panOpciones1.setLayout(new GridLayout(6, 1, 0, 0));
 		
-		JButton btnNuevoPartido = new JButton("Nuevo partido");
+		JButton btnNuevoPartido = new JButton("Registrar partido");
 		btnNuevoPartido.addActionListener(new ActionListener() {
 			
 			@Override
@@ -87,7 +87,7 @@ public class VentanaPrincipal extends JFrame {
 		btnNuevoPartido.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		panOpciones1.add(btnNuevoPartido);
 		
-		JButton btn_recinto = new JButton("Nuevo recinto");
+		JButton btn_recinto = new JButton("Registrar recinto");
 		btn_recinto.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		panOpciones1.add(btn_recinto);
 		btn_recinto.addActionListener(new ActionListener() {
@@ -100,17 +100,27 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		panOpciones1.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("New button");
+		JButton btn_candidatos = new JButton("Registrar Candidatos");
+		btn_candidatos.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		panOpciones1.add(btn_candidatos);
+		btn_candidatos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				 VentanaRegistroCandidato frame = new  VentanaRegistroCandidato();
+				frame.setVisible(true);
+			}
+		});
+		JButton btnNewButton_3 = new JButton("Registrar votante");
+		btnNewButton_3.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		panOpciones1.add(btnNewButton_3);
 		
-		JButton btnNewButton_4 = new JButton("New button");
+		JButton btnNewButton_4 = new JButton("Modificar candidato");
+		btnNewButton_4.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		panOpciones1.add(btnNewButton_4);
 		
-		JButton btnNewButton_5 = new JButton("New button");
+		JButton btnNewButton_5 = new JButton("Modificar votante");
+		btnNewButton_5.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		panOpciones1.add(btnNewButton_5);
 		
 		JPanel panOpciones2 = new JPanel();
