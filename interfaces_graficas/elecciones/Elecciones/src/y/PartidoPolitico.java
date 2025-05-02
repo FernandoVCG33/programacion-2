@@ -74,5 +74,20 @@ public class PartidoPolitico {
 		}
 		return partidos;
 	}
+	static boolean reescribirPartido(ArrayList<PartidoPolitico> partidos, String archivo) {
+		try {
+			PrintWriter escritor = new PrintWriter(new FileWriter(archivo,true));
+			for (PartidoPolitico pp : partidos) {
+				String registro=pp.getSigla()+";"+pp.getNombre()+";"+pp.isHabilitado();
+				escritor.println(registro);	
+			}
+			escritor.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+	/*ventana mod partido*/
 	
 }

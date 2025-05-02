@@ -114,30 +114,66 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnNewButton_3 = new JButton("Registrar votante");
 		btnNewButton_3.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		panOpciones1.add(btnNewButton_3);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaRegVotante frame = new VentanaRegVotante();
+				frame.setVisible(true);
+				
+			}
+		});
 		
 		JButton btnNewButton_4 = new JButton("Modificar candidato");
 		btnNewButton_4.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		panOpciones1.add(btnNewButton_4);
+		btnNewButton_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaModVotante frame = new VentanaModVotante() ;
+				frame.setVisible(true);
+				
+			}
+		});
 		
-		JButton btnNewButton_5 = new JButton("Modificar votante");
-		btnNewButton_5.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		panOpciones1.add(btnNewButton_5);
+		JButton btnModVotante = new JButton("Modificar votante");
+		btnModVotante.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		panOpciones1.add(btnModVotante);
+		btnModVotante.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaModVotante frame = new VentanaModVotante();
+				frame.setVisible(true);
+				
+			}
+		});
 		
 		JPanel panOpciones2 = new JPanel();
 		panMenu.add(panOpciones2);
 		panOpciones2.setLayout(new GridLayout(6, 1, 0, 0));
 		
-		JButton btnNewButton_6 = new JButton("New button");
+		JButton btnNewButton_6 = new JButton("Modificar Partido");
 		panOpciones2.add(btnNewButton_6);
 		
-		JButton btnNewButton_1_1 = new JButton("New button");
+		JButton btnNewButton_1_1 = new JButton("Modificar Recinto");
 		panOpciones2.add(btnNewButton_1_1);
 		
-		JButton btnNewButton_2_1 = new JButton("New button");
+		JButton btnNewButton_2_1 = new JButton("Reporte completo");
 		panOpciones2.add(btnNewButton_2_1);
 		
-		JButton btnNewButton_3_1 = new JButton("New button");
-		panOpciones2.add(btnNewButton_3_1);
+		JButton btnRP = new JButton("Reporte por partido");
+		panOpciones2.add(btnRP);
+		btnRP.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaRepCompleto frame =  new VentanaRepCompleto();
+				frame.setVisible(true);
+				
+			}
+		});
 		
 		JPanel panImagen = new JPanel();
 		JLabel lblImagen  =  new JLabel();

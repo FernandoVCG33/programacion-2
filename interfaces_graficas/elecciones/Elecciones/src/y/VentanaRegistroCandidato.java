@@ -51,7 +51,7 @@ public class VentanaRegistroCandidato extends JFrame {
 	public VentanaRegistroCandidato() {
 		ArrayList<PartidoPolitico>partidos= PartidoPolitico.leerPartidosTxt(Archivos.archivoPartidos) ;
 		setTitle("Nuevo Candidato");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setResizable(false);
 		contentPane = new JPanel();
@@ -74,7 +74,7 @@ public class VentanaRegistroCandidato extends JFrame {
 		panFormulario.setLayout(null);
 		
 		JLabel lb_codigo = new JLabel("Codigo:");
-		lb_codigo.setBounds(106, 10, 51, 13);
+		lb_codigo.setBounds(87, 10, 51, 13);
 		panFormulario.add(lb_codigo);
 		
 		textField = new JTextField();
@@ -83,7 +83,7 @@ public class VentanaRegistroCandidato extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lb_nombre = new JLabel("Nombre:");
-		lb_nombre.setBounds(106, 33, 51, 13);
+		lb_nombre.setBounds(87, 39, 51, 13);
 		panFormulario.add(lb_nombre);
 		
 		textField_1 = new JTextField();
@@ -92,7 +92,7 @@ public class VentanaRegistroCandidato extends JFrame {
 		textField_1.setColumns(10);
 		
 		JLabel lb_ci = new JLabel("Ci:");
-		lb_ci.setBounds(106, 73, 45, 13);
+		lb_ci.setBounds(87, 68, 45, 13);
 		panFormulario.add(lb_ci);
 		
 		textField_2 = new JTextField();
@@ -101,7 +101,7 @@ public class VentanaRegistroCandidato extends JFrame {
 		textField_2.setColumns(10);
 		
 		JLabel lb_usuario = new JLabel("Usuario:");
-		lb_usuario.setBounds(106, 101, 45, 13);
+		lb_usuario.setBounds(87, 101, 70, 13);
 		panFormulario.add(lb_usuario);
 		
 		textField_3 = new JTextField();
@@ -110,7 +110,7 @@ public class VentanaRegistroCandidato extends JFrame {
 		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Password");
-		lblNewLabel.setBounds(106, 133, 45, 13);
+		lblNewLabel.setBounds(87, 133, 70, 13);
 		panFormulario.add(lblNewLabel);
 		
 		textField_4 = new JTextField();
@@ -119,7 +119,7 @@ public class VentanaRegistroCandidato extends JFrame {
 		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Partido:");
-		lblNewLabel_1.setBounds(106, 166, 45, 13);
+		lblNewLabel_1.setBounds(87, 166, 51, 13);
 		panFormulario.add(lblNewLabel_1);
 		
 		textField_5 = new JTextField();
