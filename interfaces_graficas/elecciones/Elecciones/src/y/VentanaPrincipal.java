@@ -124,14 +124,15 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		
-		JButton btnNewButton_4 = new JButton("Modificar candidato");
-		btnNewButton_4.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		panOpciones1.add(btnNewButton_4);
-		btnNewButton_4.addActionListener(new ActionListener() {
+		JButton btncandidato = new JButton("Modificar candidato");
+		btncandidato.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		panOpciones1.add(btncandidato);
+		
+		btncandidato.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaModVotante frame = new VentanaModVotante() ;
+				VentanaModCandidato frame = new VentanaModCandidato();
 				frame.setVisible(true);
 				
 			}
@@ -157,8 +158,17 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnNewButton_6 = new JButton("Modificar Partido");
 		panOpciones2.add(btnNewButton_6);
 		
-		JButton btnNewButton_1_1 = new JButton("Modificar Recinto");
-		panOpciones2.add(btnNewButton_1_1);
+		JButton btnMr = new JButton("Modificar Recinto");
+		panOpciones2.add(btnMr);
+		btnMr.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//VentanaModRecinto frame = new VentanaModRecinto();
+				//frame.setVisible(true);
+				
+			}
+		});
 		
 		JButton btnNewButton_2_1 = new JButton("Reporte completo");
 		panOpciones2.add(btnNewButton_2_1);

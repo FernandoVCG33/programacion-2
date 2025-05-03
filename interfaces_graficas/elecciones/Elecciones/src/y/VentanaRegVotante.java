@@ -7,9 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -72,7 +76,31 @@ public class VentanaRegVotante extends JFrame {
 		JButton btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		panel_1.add(btnRegistrar);
-		
+		btnRegistrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int codigo = Integer.parseInt(textCodigo.getText());
+				String usuario= textUsuario.getText();
+				String recinto = textRecinto.getText();
+				String nombre= textNombre.getText();
+				String password = textPassword.getText();
+				Votante pp = new Votante(codigo,usuario,recinto,nombre,password, null);
+				if(pp.registrarVotanteTxt(Archivos.archivoVotante)) {
+					JOptionPane.showMessageDialog(btnRegistrar, "Se registro correctamente");
+					textCodigo.setText("");
+					textUsuario.setText("");
+					textRecinto.setText("");
+					textNombre.setText("");
+					textPassword.setText("");
+					
+				}
+				else {
+					JOptionPane.showMessageDialog(btnRegistrar, "Ocurrio un error (intentaste registrar a evo.. )");
+				}
+				
+		}});
 		JButton btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		panel_1.add(btnLimpiar);

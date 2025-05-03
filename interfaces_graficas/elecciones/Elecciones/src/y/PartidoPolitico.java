@@ -54,7 +54,7 @@ public class PartidoPolitico {
 		}
 		return true;
 	}
-	
+	//leer partidos txt
 	static ArrayList<PartidoPolitico> leerPartidosTxt(String archivo){
 		ArrayList<PartidoPolitico> partidos =new ArrayList<PartidoPolitico>();
 		try {

@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -64,7 +65,7 @@ public class VentanaModPartido extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panBotones.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		panPrincipal.add(panBotones, BorderLayout.SOUTH);
-		
+		//registra
 		JButton btnRegistrar = new JButton("Registrar");
 		btnRegistrar.addActionListener(new ActionListener() {
 
@@ -74,10 +75,13 @@ public class VentanaModPartido extends JFrame {
 					partidos.get(indice).setSigla(txtFieldSiglaSIGLA.getText());
 					partidos.get(indice).setNombre(txtFieldNombre.getText());
 					if(PartidoPolitico.reescribirPartido(partidos,Archivos.archivoPartidos)) {
-
-						
+						JOptionPane.showMessageDialog(btnRegistrar, "Se modifico con exito");	
 					}
-				
+					else {
+						JOptionPane.showMessageDialog(btnRegistrar, "Ha ocurrido un error");
+					}
+					txtFieldNombre.setText("");
+					txtFieldSiglaSIGLA.setText("");
 			}
 			
 		});

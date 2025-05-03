@@ -7,10 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import java.awt.FlowLayout;
@@ -45,6 +47,7 @@ public class VentanaRegistroRecinto extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaRegistroRecinto() {
+		
 		setTitle("Registro de Recinto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -101,6 +104,26 @@ public class VentanaRegistroRecinto extends JFrame {
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		panBotones.add(btnAceptar);
+		btnAceptar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String nombre = txtNombre.getText();
+				String ubicacion= txtUbicacion.getText();
+				String ciudad= cbCiudad.getToolTipText();
+				Recinto rr = new Recinto(nombre,ubicacion,ciudad);
+				if(rr.registrarRecintoTxt(Archivos.archivoRecintos)) {
+					JOptionPane.showMessageDialog(btnAceptar, "Se registro con exito!");	
+					txtNombre.setText("");
+					txtUbicacion.setText("");
+				}
+				else {
+					JOptionPane.showMessageDialog(btnAceptar, "Ha ocurrido un error");
+				}
+				
+				
+			}
+		});
 		
 		JButton btnLimpiar = new JButton("Limpiar");
 		panBotones.add(btnLimpiar);
