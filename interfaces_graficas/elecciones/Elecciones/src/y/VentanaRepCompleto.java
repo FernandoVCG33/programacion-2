@@ -1,5 +1,4 @@
 package y;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -166,4 +165,3 @@ public class VentanaRepCompleto extends JFrame {
 	}
 
 }
-

@@ -155,23 +155,18 @@ public class VentanaPrincipal extends JFrame {
 		panMenu.add(panOpciones2);
 		panOpciones2.setLayout(new GridLayout(6, 1, 0, 0));
 		
-		JButton btnNewButton_6 = new JButton("Modificar Partido");
-		panOpciones2.add(btnNewButton_6);
-		
-		JButton btnMr = new JButton("Modificar Recinto");
-		panOpciones2.add(btnMr);
-		btnMr.addActionListener(new ActionListener() {
+		JButton btnV = new JButton("Reporte de votantes");
+		panOpciones2.add(btnV);
+		btnV.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//VentanaModRecinto frame = new VentanaModRecinto();
-				//frame.setVisible(true);
-				
+				// TODO Auto-generated method stub
+				VentanaRepVotante frame = new VentanaRepVotante();
+				frame.setVisible(true);
 			}
 		});
 		
-		JButton btnNewButton_2_1 = new JButton("Reporte completo");
-		panOpciones2.add(btnNewButton_2_1);
 		
 		JButton btnRP = new JButton("Reporte por partido");
 		panOpciones2.add(btnRP);

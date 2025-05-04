@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Votante extends Persona {
 	private Recinto recinto;
 	private boolean habilitado;
-	public Votante(int codigo, String nombre, String ci, String usurio, String password, Recinto recinto) {
+	public Votante(int codigo, String nombre, String ci, String usurio, String password) {
 		super(codigo, nombre, ci, usurio, password);
 		this.recinto = recinto;
 		this.habilitado = true;
@@ -29,7 +29,7 @@ public class Votante extends Persona {
 	}
 	@Override
 	public String toString() {
-		return  this.getNombre() +" "+this.getCi()  +"Votante [recinto=" + recinto + ", habilitado=" + habilitado + "]";
+	    return this.getNombre() + " " + this.getCi() + " Votante [recinto=" + recinto + ", habilitado=" + habilitado + "]";
 	}
 	
 	public boolean registrarVotanteTxt(String archivo) {
@@ -45,28 +45,47 @@ public class Votante extends Persona {
 		return true;
 	}
 	//leer recintos txt
-	static ArrayList<Votante> leerRecintosTxt(String archivo){
-		ArrayList<Votante> votantes = new ArrayList<Votante>();
-		try {
-			BufferedReader lector= new BufferedReader(new FileReader(archivo));
-			String linea;
-			while((linea = lector.readLine())!=null) {
-				String [] datos= linea.split(";");
-				int codigo = Integer.parseInt(datos[0]);
-				String nombre = datos[1];
-				String ci = datos[2];
-				String usuario = datos[3];
-				String password = datos[4];
-				Recinto recinto = new Recinto(datos[5],datos[5],datos[5]); // suponiendo un constructor válido
-				boolean habilitado = Boolean.parseBoolean(datos[6]);
-				votantes.add(new Votante(codigo, nombre, ci, usuario, password, recinto));
+	static ArrayList<Votante> leerVotanteTxt(String archivo) {
+	    ArrayList<Votante> votantes = new ArrayList<Votante>();
+	    try {
+	        BufferedReader lector = new BufferedReader(new FileReader(archivo));
+	        String linea;
+	        
+	        // Leer cada línea del archivo
+	        while ((linea = lector.readLine()) != null) {
+	            String[] datos = linea.split(";");
 
-			}
-			lector.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return votantes;
+	            // Asegurarse de que hay la cantidad correcta de datos
+	            if (datos.length == 7) {
+	                try {
+	                    int codigo = Integer.parseInt(datos[0]); // código debe ser un número
+	                    String nombre = datos[1];
+	                    String ci = datos[2];
+	                    String usuario = datos[3];
+	                    String password = datos[4];
+	                    Recinto recinto = new Recinto(datos[5], datos[5], datos[5]); // Crear el objeto Recinto
+	                    boolean habilitado = Boolean.parseBoolean(datos[6]);
+
+	                    // Crear el objeto Votante y agregarlo a la lista
+	                    votantes.add(new Votante(codigo, nombre, ci, usuario, password));
+
+	                } catch (NumberFormatException e) {
+	                    System.out.println("Error al convertir datos numéricos: " + linea);
+	                } catch (Exception e) {
+	                    System.out.println("Error al leer la línea: " + linea);
+	                    e.printStackTrace();
+	                }
+	            } else {
+	                System.out.println("Línea mal formateada: " + linea);
+	            }
+	        }
+
+	        lector.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        System.out.println("Error al leer el archivo");
+	    }
+	    return votantes;
 	}
+
 }

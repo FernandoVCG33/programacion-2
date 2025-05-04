@@ -86,7 +86,7 @@ public class VentanaRegVotante extends JFrame {
 				String recinto = textRecinto.getText();
 				String nombre= textNombre.getText();
 				String password = textPassword.getText();
-				Votante pp = new Votante(codigo,usuario,recinto,nombre,password, null);
+				Votante pp = new Votante(codigo,usuario,recinto,nombre,password);
 				if(pp.registrarVotanteTxt(Archivos.archivoVotante)) {
 					JOptionPane.showMessageDialog(btnRegistrar, "Se registro correctamente");
 					textCodigo.setText("");

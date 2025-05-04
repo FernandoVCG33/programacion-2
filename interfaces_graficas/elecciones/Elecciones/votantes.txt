@@ -1,2 +1,2 @@
-null;true;
-123;fernado;satelite;fer003;12345;null
+1;Juan Pérez;12345678;juanperez;contraseña;Recinto 1;true
+2;Ana García;87654321;anagarcia;contraseña2;Recinto 2;true
