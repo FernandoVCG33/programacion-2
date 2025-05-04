@@ -167,6 +167,17 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		
+		JButton btn_recintosR = new JButton("Reporte de recintos");
+		panOpciones2.add(btn_recintosR);
+		btn_recintosR.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaRepRecintos frame = new VentanaRepRecintos();
+				frame.setVisible(true);
+			}
+		});
 		
 		JButton btnRP = new JButton("Reporte por partido");
 		panOpciones2.add(btnRP);
