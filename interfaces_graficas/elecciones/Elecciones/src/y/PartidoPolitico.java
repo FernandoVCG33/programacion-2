@@ -39,7 +39,7 @@ public class PartidoPolitico {
 	//toString
 	@Override
 	public String toString() {
-		return "Nombre" + nombre + ", habilitado=" + habilitado ;
+		return "Nombre: " + nombre + ", habilitado: " + habilitado ;
 	}
 	
 	public boolean registrarPartidoTxt(String archivo) {

@@ -121,7 +121,7 @@ public class VentanaRepCompleto extends JFrame {
 		});
 		btnIzqMostrar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		panIzqBotones.add(btnIzqMostrar, BorderLayout.NORTH);
-		
+		//modifica
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -121,7 +121,7 @@ public class VentanaRepVotante extends JFrame {
         lblVotantes.setBackground(new Color(128, 128, 192));
         panCentro.add(lblVotantes, BorderLayout.NORTH);
         
-        
+        //muestra a los votantes
         String[] datosVotantes1 = new String[votantes.size()];
         for (int i = 0; i < votantes.size(); i++) {
             datosVotantes1[i] = votantes.get(i).toString();  // Usar toString() de Votante
@@ -130,7 +130,6 @@ public class VentanaRepVotante extends JFrame {
         listVotantes.setBackground(new Color(192, 192, 192));
         JScrollPane scrollVotantes = new JScrollPane(listVotantes);
         panCentro.add(scrollVotantes, BorderLayout.CENTER);
-  
-
+ 
     }
 }
