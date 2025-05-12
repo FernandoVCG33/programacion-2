@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Ajedrez_definitivo {
+module Cancha_alquiler {
 }

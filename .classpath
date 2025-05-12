@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Ajedrez/src"/>
+	<classpathentry kind="src" path="Examenes/Segundo examen/src"/>
+	<classpathentry kind="src" path="Futbol/src"/>
+	<classpathentry kind="src" path="interfaces_graficas/elecciones/Elecciones/src"/>
+	<classpathentry kind="src" path="interfaces_graficas/primera_interfaz/interfaz1/src"/>
+	<classpathentry kind="src" path="Medallas/src"/>
+	<classpathentry kind="output" path="Ajedrez/bin"/>
+</classpath>
