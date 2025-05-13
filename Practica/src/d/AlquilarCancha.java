@@ -2,6 +2,7 @@ package d;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,6 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 
 
@@ -74,8 +78,7 @@ public class AlquilarCancha implements Parametros {
 
 	@Override
 	public String toString() {
-		return "AlquilarCancha [cantidadHoras=" + cantidadHoras + ", horaInicio=" + horaInicio + ", nombre=" + nombre
-				+ ", cancha=" + cancha + "]";
+		return "cantidadHoras=" + cantidadHoras + ", horaInicio=" + horaInicio + ", nombre=" + nombre+ ", cancha=" + cancha ;
 	}
 
 
@@ -122,11 +125,11 @@ public class AlquilarCancha implements Parametros {
 	            // Asegurarse de que hay la cantidad correcta de datos
 	            if (datos.length == 6) {
 	                try {
-	                    double cantidadH = Integer.parseInt(datos[0]); // código debe ser un número
+	                    double cantidadH = Double.parseDouble(datos[0]); // código debe ser un número
 	                    int horaI = Integer.parseInt(datos[1]);
 	                    String name = datos[2];
 	                    String cancha = datos[3];
-	                    int costo = Integer.parseInt(datos[4]);
+	                    double costo = Double.parseDouble(datos[4]);
 	                    boolean dia = Boolean.parseBoolean(datos[5]);
 	                    // Crear el objeto Votante y agregarlo a la lista
 	                    canchas.add(new AlquilarCancha(cantidadH, horaI, name, cancha)); //debe ser el nombre del array
@@ -187,6 +190,7 @@ public class AlquilarCancha implements Parametros {
 	    fileout.writeDouble( this.cantidadHoras);
 	    fileout.writeInt(this.horaInicio );
 	    fileout.writeUTF(this.nombre);
+	    fileout.writeUTF(this.cancha);
 	    fileout.writeInt((int) this.calcularCosto());
 	    fileout.writeBoolean((boolean) this.determinarDiaNoche());
 	    fileout.close();
@@ -196,14 +200,19 @@ public class AlquilarCancha implements Parametros {
 	public void leebin(String archivo) throws IOException {
 	    // TODO Auto-generated method stub
 	    DataInputStream filein = new DataInputStream(new FileInputStream(archivo));
-	    String cad = "";
+	    
 	    while(filein.available()!=0){
-	        String ci = filein.readUTF();
-	        String nombre = filein.readUTF();
-	        Double salario = filein.readDouble();
-	        cad += ci + "\t" + nombre + "\t" + salario + "\n";
+	    	double cant= filein.readDouble();
+	    	int horai=  filein.readInt();
+	    	String names= filein.readUTF();
+	    	String canchas= filein.readUTF();
+	    	int costos=  filein.readInt();
+	    	boolean diaDN= filein.readBoolean();
+	    	//que mas ??
+	    	
+	        
 	    }
-	    JTextArea jta = new JTextArea(cad);
+	    JTextArea jta = new JTextArea();
 	    JOptionPane.showMessageDialog(null, jta);
 	    filein.close();
 	}

@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import java.awt.Color;
@@ -27,11 +28,9 @@ public class VentanaI extends JFrame {
 	private JTextField textnombre;
 	private JTextField codigo;
 	private JTextField nota1;
-	private JTextField nota2;
-	private JTextField nota3;
-	private JTextField promedio;
+	private JTextField cal;
+	private JTextField nombreP;
 	private JTextField estado;
-	private JTextField promg;
 
 	/**
 	 * Launch the application.
@@ -53,6 +52,13 @@ public class VentanaI extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaI() {
+		ArrayList<AlquilarCancha> registro = AlquilarCancha.leerTxt(Archivos.alquilerTexto);
+
+        // Crear arreglo de Strings para el JList
+        String[] register = new String[registro.size()];
+        for (int i = 0; i < registro.size(); i++) {
+            register[i] = registro.get(i).toString();
+        }
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBounds(100, 100, 1000, 600);
@@ -78,64 +84,69 @@ public class VentanaI extends JFrame {
 		lblNewLabel_3.setBounds(96, 10, 127, 13);
 		Izquierda.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Nombre");
-		lblNewLabel_4.setBounds(10, 55, 45, 13);
+		JLabel lblNewLabel_4 = new JLabel("Nombre de la cancha: ");
+		lblNewLabel_4.setBounds(10, 31, 146, 13);
 		Izquierda.add(lblNewLabel_4);
 		
 		textnombre = new JTextField();
-		textnombre.setBounds(10, 78, 284, 26);
+		textnombre.setBounds(10, 54, 284, 26);
 		Izquierda.add(textnombre);
 		textnombre.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Codigo:");
-		lblNewLabel_5.setBounds(10, 124, 45, 13);
+		JLabel lblNewLabel_5 = new JLabel("Hora de inicio :");
+		lblNewLabel_5.setBounds(10, 90, 96, 13);
 		Izquierda.add(lblNewLabel_5);
 		
 		codigo = new JTextField();
-		codigo.setBounds(10, 147, 284, 26);
+		codigo.setBounds(10, 113, 284, 26);
 		Izquierda.add(codigo);
 		codigo.setColumns(10);
 		
-		JLabel lblNewLabel_6 = new JLabel("Nota 1 :");
-		lblNewLabel_6.setBounds(10, 195, 45, 13);
-		Izquierda.add(lblNewLabel_6);
-		
-		JLabel lblNewLabel_7 = new JLabel("Nota 2 :");
-		lblNewLabel_7.setBounds(121, 195, 45, 13);
+		JLabel lblNewLabel_7 = new JLabel("Total:");
+		lblNewLabel_7.setBounds(10, 291, 45, 13);
 		Izquierda.add(lblNewLabel_7);
 		
-		JLabel lblNewLabel_8 = new JLabel("Nota 3: ");
-		lblNewLabel_8.setBounds(249, 195, 45, 13);
-		Izquierda.add(lblNewLabel_8);
-		
 		nota1 = new JTextField();
-		nota1.setBounds(10, 220, 70, 31);
+		nota1.setBounds(10, 171, 284, 26);
 		Izquierda.add(nota1);
 		nota1.setColumns(10);
 		
-		nota2 = new JTextField();
-		nota2.setBounds(131, 218, 54, 33);
-		Izquierda.add(nota2);
-		nota2.setColumns(10);
+		cal = new JTextField();
+		cal.setBounds(10, 314, 284, 26);
+		Izquierda.add(cal);
+		cal.setColumns(10);
 		
-		nota3 = new JTextField();
-		nota3.setBounds(240, 218, 54, 33);
-		Izquierda.add(nota3);
-		nota3.setColumns(10);
+		nombreP = new JTextField();
+		nombreP.setBounds(10, 227, 284, 26);
+		Izquierda.add(nombreP);
+		nombreP.setColumns(10);
 		
 		JButton btnCal = new JButton("Calcular");
 		btnCal.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+		            String nombreC = textnombre.getText();
+		            int horaIn = Integer.parseInt(codigo.getText());
+		            double horasT = Double.parseDouble(nota1.getText());
+		            String nombrep = nombreP.getText();
+		           
+		            AlquilarCancha est = new AlquilarCancha(horasT,horaIn,nombreC,nombrep);
+		            cal.setText(String.format("%.2f", est.calcularCosto()));
+		            //promedio.setText(String.format("%.2f", est.getPromedio()));
+		            //estado.setText(est.getEstado());
+		            
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(null, "Por favor, ingresa números válidos en las notas.");
+		        }
 		    }
 		});
-		btnCal.setBounds(100, 261, 85, 21);
+		btnCal.setBounds(108, 263, 85, 21);
 		Izquierda.add(btnCal);
 		
 		JButton btnL = new JButton("Limpiar");
-		btnL.setBounds(209, 261, 85, 21);
+		btnL.setBounds(209, 263, 85, 21);
 		Izquierda.add(btnL);
 		btnL.addActionListener(new ActionListener() {
 			
@@ -145,82 +156,115 @@ public class VentanaI extends JFrame {
 				textnombre.setText("");
 				codigo.setText("");
 				nota1.setText("");
-				nota2.setText("");
-				nota3.setText("");
+				cal.setText("");
+				nombreP.setText("");
 			}
 		});
 		
-		JLabel lblNewLabel_9 = new JLabel("Promedio:");
-		lblNewLabel_9.setBounds(10, 308, 85, 13);
-		Izquierda.add(lblNewLabel_9);
-		
-		promedio = new JTextField();
-		promedio.setBounds(10, 333, 284, 26);
-		Izquierda.add(promedio);
-		promedio.setColumns(10);
-		
-		JLabel lblNewLabel_10 = new JLabel("Estado");
-		lblNewLabel_10.setBounds(10, 376, 85, 13);
+		JLabel lblNewLabel_10 = new JLabel("Total ganado");
+		lblNewLabel_10.setBounds(10, 399, 85, 13);
 		Izquierda.add(lblNewLabel_10);
 		
 		estado = new JTextField();
-		estado.setBounds(10, 399, 284, 26);
+		estado.setBounds(10, 422, 284, 26);
 		Izquierda.add(estado);
 		estado.setColumns(10);
 		
-		JButton btnRE = new JButton("Registrar estudiante");
-		btnRE.setBounds(10, 434, 284, 21);
+		JButton btnRE = new JButton("Registrar");
+		btnRE.setBounds(10, 350, 284, 21);
 		btnRE.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(btnRE, "Se registro correctamente");
-				textnombre.setText("");
-				codigo.setText("");
-				nota1.setText("");
-				nota2.setText("");
-				nota3.setText("");
+				String nombreC = textnombre.getText();
+	            int horaIn = Integer.parseInt(codigo.getText());
+	            double horasT = Double.parseDouble(nota1.getText());
+	            String nombrep = nombreP.getText();
+	            AlquilarCancha est = new AlquilarCancha(horasT,horaIn,nombrep,nombreC);
+				if(est.registrarTxt(Archivos.alquilerTexto)) {
+					JOptionPane.showMessageDialog(btnRE, "Se registro correctamente");
+					textnombre.setText("");
+					codigo.setText("");
+					nota1.setText("");
+					cal.setText("");
+					nombreP.setText("");
+					
+				}
+				else {
+					JOptionPane.showMessageDialog(btnRE, "Ocurrio un error (intentaste registrar a evo.. )");
+				}
+	
 			}
 		});
 		Izquierda.add(btnRE);
 		
-		JLabel lblNewLabel_11 = new JLabel("Promedio general");
-		lblNewLabel_11.setBounds(100, 465, 127, 13);
-		Izquierda.add(lblNewLabel_11);
-		
-		promg = new JTextField();
-		promg.setBounds(96, 476, 96, 19);
-		Izquierda.add(promg);
-		promg.setColumns(10);
-		
-		JButton btncalp = new JButton("Calcular promedio");
-		btncalp.setBounds(0, 500, 304, 21);
+		JButton btncalp = new JButton("Calcular total ganado");
+		btncalp.setBounds(0, 490, 304, 21);
 		Izquierda.add(btncalp);
+		
+		JLabel lblNewLabel_12 = new JLabel("Horas totales");
+		lblNewLabel_12.setBounds(10, 148, 85, 13);
+		Izquierda.add(lblNewLabel_12);
+		
+		JLabel ln = new JLabel("Nombre de usuario");
+		ln.setBounds(10, 207, 146, 13);
+		Izquierda.add(ln);
 		
 		JPanel panelCentral = new JPanel();
 		panelCentral.setBounds(368, 37, 304, 521);
 		contentPane.add(panelCentral);
 		panelCentral.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel("Estudiantes registrados");
+		JLabel lblNewLabel_1 = new JLabel("Reporte completo");
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panelCentral.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		
+		String[] datosVotantes1 = new String[registro.size()];
+        for (int i = 0; i < registro.size(); i++) {
+            datosVotantes1[i] = registro.get(i).toString();  // Usar toString() de Votante
+        }
+        
+        JList<String> list;
+        list = new JList<>();
+        JScrollPane scrollPane = new JScrollPane(list);
+        panelCentral.add(scrollPane, BorderLayout.CENTER);
+
+        panelCentral.add(scrollPane, BorderLayout.CENTER);
+
 		
-		JList list = new JList();
-		panelCentral.add(list, BorderLayout.WEST);
-		JScrollPane scrollPane = new JScrollPane(list);
 		panelCentral.add(scrollPane, BorderLayout.CENTER);
+		
 		JPanel cenBon = new JPanel();
 		panelCentral.add(cenBon, BorderLayout.SOUTH);
 		
 		JButton btn = new JButton("Mostrar reporte");
+		btn.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        ArrayList<AlquilarCancha> registro = AlquilarCancha.leerTxt(Archivos.alquilerTexto);
+
+		        String[] register = new String[registro.size()];
+		        for (int i = 0; i < registro.size(); i++) {
+		            register[i] = registro.get(i).toString();
+		        }
+
+		        list.setListData(register); // Aquí actualizas los datos del JList
+		    }
+		});
+
 		cenBon.add(btn);
 		
 		JButton btnlimpiar = new JButton("Limpiar reporte");
+		btnlimpiar.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        list.setListData(new String[0]); // Limpia la lista
+		    }
+		});
+
 		cenBon.add(btnlimpiar);
 		
 		JPanel paneDerecha = new JPanel();
@@ -228,7 +272,7 @@ public class VentanaI extends JFrame {
 		contentPane.add(paneDerecha);
 		paneDerecha.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_2 = new JLabel("Estidiantes destacados");
+		JLabel lblNewLabel_2 = new JLabel("Reporte nota");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		paneDerecha.add(lblNewLabel_2, BorderLayout.NORTH);
 		
