@@ -142,11 +142,11 @@ public class VentanaI extends JFrame {
 		        }
 		    }
 		});
-		btnCal.setBounds(108, 263, 85, 21);
+		btnCal.setBounds(209, 263, 85, 21);
 		Izquierda.add(btnCal);
 		
 		JButton btnL = new JButton("Limpiar");
-		btnL.setBounds(209, 263, 85, 21);
+		btnL.setBounds(114, 263, 85, 21);
 		Izquierda.add(btnL);
 		btnL.addActionListener(new ActionListener() {
 			
@@ -200,6 +200,24 @@ public class VentanaI extends JFrame {
 		Izquierda.add(btnRE);
 		
 		JButton btncalp = new JButton("Calcular total ganado");
+		btncalp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					ArrayList<AlquilarCancha> registro = AlquilarCancha.leerTxt(Archivos.alquilerTexto);
+		            double total = 0.0;
+		            for (AlquilarCancha a : registro) {
+		                total += a.calcularCosto();
+		            }
+		            estado.setText(String.format("%.2f", total));
+		            
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(null, "No puedo leer el registro.");
+		        }
+			}
+		});
 		btncalp.setBounds(0, 490, 304, 21);
 		Izquierda.add(btncalp);
 		
@@ -224,7 +242,7 @@ public class VentanaI extends JFrame {
 		
 		String[] datosVotantes1 = new String[registro.size()];
         for (int i = 0; i < registro.size(); i++) {
-            datosVotantes1[i] = registro.get(i).toString();  // Usar toString() de Votante
+            datosVotantes1[i] = registro.get(i).toString();  // Usar toString() de AlquilerCancha
         }
         
         JList<String> list;

@@ -78,7 +78,7 @@ public class AlquilarCancha implements Parametros {
 
 	@Override
 	public String toString() {
-		return "cantidadHoras=" + cantidadHoras + ", horaInicio=" + horaInicio + ", nombre=" + nombre+ ", cancha=" + cancha ;
+		return "Cantidad de horas=" + cantidadHoras + ", hora de inicio=" + horaInicio + ", nombre: " + nombre+ ", canch: " + cancha ;
 	}
 
 
@@ -153,7 +153,7 @@ public class AlquilarCancha implements Parametros {
 	    return canchas;
 	}
 	
-	public static double totalGanado(String archivo) {
+	public  double totalGanado(String archivo) {
 	    double total = 0.0;
 
 	    try {
