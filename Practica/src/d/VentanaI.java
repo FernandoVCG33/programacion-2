@@ -9,8 +9,10 @@ import javax.swing.border.EmptyBorder;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
@@ -21,7 +23,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class VentanaI extends JFrame {
+public class VentanaI extends JFrame implements Archivos , Parametros {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -50,13 +52,20 @@ public class VentanaI extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
 	 */
-	public VentanaI() {
+	public VentanaI() throws IOException {
+		/*añadir esto*/
 		ArrayList<AlquilarCancha> registro = AlquilarCancha.leerTxt(Archivos.alquilerTexto);
+		ArrayList<AlquilarCancha> registroBin = AlquilarCancha.leeBin(Archivos.alquilerBinario);
 
         // Crear arreglo de Strings para el JList
         String[] register = new String[registro.size()];
         for (int i = 0; i < registro.size(); i++) {
+            register[i] = registro.get(i).toString();
+        }
+        String [] registerBin = new String[registroBin.size()];
+        for (int i = 0; i < registroBin.size(); i++) {
             register[i] = registro.get(i).toString();
         }
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -182,18 +191,37 @@ public class VentanaI extends JFrame {
 	            double horasT = Double.parseDouble(nota1.getText());
 	            String nombrep = nombreP.getText();
 	            AlquilarCancha est = new AlquilarCancha(horasT,horaIn,nombrep,nombreC);
-				if(est.registrarTxt(Archivos.alquilerTexto)) {
-					JOptionPane.showMessageDialog(btnRE, "Se registro correctamente");
-					textnombre.setText("");
-					codigo.setText("");
-					nota1.setText("");
-					cal.setText("");
-					nombreP.setText("");
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(btnRE, "Ocurrio un error (intentaste registrar a evo.. )");
-				}
+	            if (Parametros.horalimite >horaIn) {
+	            	if(est.registrarTxt(Archivos.alquilerTexto)) {
+						JOptionPane.showMessageDialog(btnRE, "Se registro correctamente");
+						textnombre.setText("");
+						codigo.setText("");
+						nota1.setText("");
+						cal.setText("");
+						nombreP.setText("");	
+					}
+					else {
+						JOptionPane.showMessageDialog(btnRE, "Ocurrio un error");
+					}
+	            }
+	            else {
+	            	try {
+						if(est.escribeBin(Archivos.alquilerBinario)) {
+							JOptionPane.showMessageDialog(btnRE, "Se registro correctamente en binario");
+							textnombre.setText("");
+							codigo.setText("");
+							nota1.setText("");
+							cal.setText("");
+							nombreP.setText("");	
+						}
+						else {
+							JOptionPane.showMessageDialog(btnRE, "Ocurrio un error ");
+						}
+					} catch (HeadlessException | IOException e1) {
+						// TODO Auto-generated catch block
+						
+					}
+	            }
 	
 			}
 		});
@@ -211,6 +239,10 @@ public class VentanaI extends JFrame {
 		            for (AlquilarCancha a : registro) {
 		                total += a.calcularCosto();
 		            }
+		            ArrayList<AlquilarCancha> registroBins = AlquilarCancha.leeBin(Archivos.alquilerBinario);
+		            for (AlquilarCancha z : registroBins) {
+						total+=z.calcularCosto();
+					}
 		            estado.setText(String.format("%.2f", total));
 		            
 		        } catch (NumberFormatException ex) {
@@ -230,7 +262,7 @@ public class VentanaI extends JFrame {
 		Izquierda.add(ln);
 		
 		JPanel panelCentral = new JPanel();
-		panelCentral.setBounds(368, 37, 304, 521);
+		panelCentral.setBounds(342, 37, 330, 521);
 		contentPane.add(panelCentral);
 		panelCentral.setLayout(new BorderLayout(0, 0));
 		
@@ -249,16 +281,13 @@ public class VentanaI extends JFrame {
         list = new JList<>();
         JScrollPane scrollPane = new JScrollPane(list);
         panelCentral.add(scrollPane, BorderLayout.CENTER);
-
         panelCentral.add(scrollPane, BorderLayout.CENTER);
-
-		
 		panelCentral.add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel cenBon = new JPanel();
 		panelCentral.add(cenBon, BorderLayout.SOUTH);
 		
-		JButton btn = new JButton("Mostrar reporte");
+		JButton btn = new JButton("Mostrar registro");
 		btn.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
@@ -285,28 +314,51 @@ public class VentanaI extends JFrame {
 
 		cenBon.add(btnlimpiar);
 		
-		JPanel paneDerecha = new JPanel();
-		paneDerecha.setBounds(720, 37, 256, 521);
-		contentPane.add(paneDerecha);
-		paneDerecha.setLayout(new BorderLayout(0, 0));
+		JPanel panelDerecha = new JPanel();
+		panelDerecha.setBounds(705, 37, 276, 521);
+		contentPane.add(panelDerecha);
+		panelDerecha.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_2 = new JLabel("Reporte de noche");
+		JLabel lblNewLabel_2 = new JLabel("Registro noche");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		paneDerecha.add(lblNewLabel_2, BorderLayout.NORTH);
+		panelDerecha.add(lblNewLabel_2, BorderLayout.NORTH);
+		
+			
+		JList <String> list_binario  ;
+		list_binario=new JList();
+		list_binario.setBackground(new Color(255, 255, 255));
+		JScrollPane scrollBinarios = new JScrollPane(list_binario);
+		panelDerecha.add(scrollBinarios, BorderLayout.CENTER);
 		
 		
+		JPanel panel_botones = new JPanel();
+		panel_botones.setBackground(new Color(64, 128, 128));
+		panelDerecha.add(panel_botones, BorderLayout.SOUTH);
 		
-		JList listaDestacados = new JList();
-		paneDerecha.add(listaDestacados, BorderLayout.WEST);
-		JScrollPane scroll2 = new JScrollPane(listaDestacados);
-		paneDerecha.add(scroll2, BorderLayout.CENTER);
-		JPanel paneBotones = new JPanel();
-		paneDerecha.add(paneBotones, BorderLayout.SOUTH);
+		JButton registroB = new JButton("Mostrar Registro");
+		panel_botones.add(registroB);
+		registroB.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        ArrayList<AlquilarCancha> registroBin = AlquilarCancha.leeBin(Archivos.alquilerBinario);
+		        String [] registerBin = new String[registroBin.size()];
+		        for (int i = 0; i < registroBin.size(); i++) {
+		            registerBin[i] = registroBin.get(i).toString(); // o usa registroBin.get(i)
+		        }
+		        list_binario.setListData(registerBin);
+		    }
+		});
 		
-		JButton btnMR = new JButton("Mostrar reporte");
-		paneBotones.add(btnMR);
 		
-		JButton btnLR = new JButton("Limpiar reporte");
-		paneBotones.add(btnLR);
+		JButton Lbin = new JButton("Limpiar Registro");
+		panel_botones.add(Lbin);
+		Lbin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				list_binario.setListData(new String[0]);
+			}
+		});
 	}
 }

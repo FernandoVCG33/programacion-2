@@ -1,5 +1,3 @@
-3.0#16#Andre Suxo#Cancha5#150.0#true
-5.0#14#Tony Vargas#Cancha 2#250.0#true
-4.0#13#Erick Flores#Cancha5#200.0#true
-2.0#15#Juan#cancha2#100.0#true
-5.0#13#Lucero#cancha11#250.0#true
+
+3.0#14#Ramiro#C2#150.0#true
+1.0#12#Joel#c5#50.0#true

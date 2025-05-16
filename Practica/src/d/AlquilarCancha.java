@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -183,38 +184,50 @@ public class AlquilarCancha implements Parametros {
 	    return total;
 	}
 	//escribe binario
-	public void escribe(String archivo) throws IOException {
+	public boolean escribeBin(String archivo) throws IOException {
 	    // TODO Auto-generated method stub
-	    DataOutputStream fileout = new DataOutputStream(new FileOutputStream(archivo,true));
-	  
-	    fileout.writeDouble( this.cantidadHoras);
-	    fileout.writeInt(this.horaInicio );
-	    fileout.writeUTF(this.nombre);
-	    fileout.writeUTF(this.cancha);
-	    fileout.writeInt((int) this.calcularCosto());
-	    fileout.writeBoolean((boolean) this.determinarDiaNoche());
-	    fileout.close();
+		try {
+			DataOutputStream fileout = new DataOutputStream(new FileOutputStream(archivo,true));
+			  
+		    fileout.writeDouble( this.cantidadHoras);
+		    fileout.writeInt(this.horaInicio );
+		    fileout.writeUTF(this.nombre);
+		    fileout.writeUTF(this.cancha);
+		    fileout.writeInt((int) this.calcularCosto());
+		    fileout.writeBoolean((boolean) this.determinarDiaNoche());
+		    fileout.close();
+		    return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error al registrar lo binarios..");
+			return false;
+		}
+	    
 	}
 	
 	//lee binario
-	public void leebin(String archivo) throws IOException {
-	    // TODO Auto-generated method stub
-	    DataInputStream filein = new DataInputStream(new FileInputStream(archivo));
-	    
-	    while(filein.available()!=0){
-	    	double cant= filein.readDouble();
-	    	int horai=  filein.readInt();
-	    	String names= filein.readUTF();
-	    	String canchas= filein.readUTF();
-	    	int costos=  filein.readInt();
-	    	boolean diaDN= filein.readBoolean();
-	    	//que mas ??
-	    	
-	        
+	static ArrayList<AlquilarCancha> leeBin(String archivo) {
+	    ArrayList<AlquilarCancha> bins = new ArrayList<>();
+	    try (DataInputStream in = new DataInputStream(new FileInputStream(archivo))) {
+	        while (true) {
+	            try {
+	                double cantidadHoras = in.readDouble();
+	                int horaInicio = in.readInt();
+	                String nombreU = in.readUTF();
+	                String cancha = in.readUTF();
+	                in.readInt();       // leer costo (no usado aquí)
+	                in.readBoolean();   // leer día/noche (no usado aquí)
+
+	                bins.add(new AlquilarCancha(cantidadHoras, horaInicio, nombreU, cancha));
+	            } catch (EOFException eof) {
+	                break;
+	            }
+	        }
+	    } catch (IOException e) {
+	        System.out.println("Error al leer el archivo binario: " + e.getMessage());
 	    }
-	    JTextArea jta = new JTextArea();
-	    JOptionPane.showMessageDialog(null, jta);
-	    filein.close();
+	    return bins;
 	}
+
 	
 }
