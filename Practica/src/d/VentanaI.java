@@ -290,7 +290,7 @@ public class VentanaI extends JFrame {
 		contentPane.add(paneDerecha);
 		paneDerecha.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_2 = new JLabel("Reporte nota");
+		JLabel lblNewLabel_2 = new JLabel("Reporte de noche");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		paneDerecha.add(lblNewLabel_2, BorderLayout.NORTH);
 		
