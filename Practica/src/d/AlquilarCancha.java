@@ -163,7 +163,6 @@ public class AlquilarCancha implements Parametros {
 
 	        while ((linea = lector.readLine()) != null) {
 	            String[] datos = linea.split("#");
-
 	            if (datos.length == 6) {
 	                try {
 	                    double costo = Double.parseDouble(datos[4]); // El costo está en la posición 4

@@ -59,15 +59,7 @@ public class VentanaI extends JFrame implements Archivos , Parametros {
 		ArrayList<AlquilarCancha> registro = AlquilarCancha.leerTxt(Archivos.alquilerTexto);
 		ArrayList<AlquilarCancha> registroBin = AlquilarCancha.leeBin(Archivos.alquilerBinario);
 
-        // Crear arreglo de Strings para el JList
-        String[] register = new String[registro.size()];
-        for (int i = 0; i < registro.size(); i++) {
-            register[i] = registro.get(i).toString();
-        }
-        String [] registerBin = new String[registroBin.size()];
-        for (int i = 0; i < registroBin.size(); i++) {
-            register[i] = registro.get(i).toString();
-        }
+        
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBounds(100, 100, 1000, 600);
@@ -271,12 +263,8 @@ public class VentanaI extends JFrame implements Archivos , Parametros {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panelCentral.add(lblNewLabel_1, BorderLayout.NORTH);
 		
-		
-		String[] datosVotantes1 = new String[registro.size()];
-        for (int i = 0; i < registro.size(); i++) {
-            datosVotantes1[i] = registro.get(i).toString();  // Usar toString() de AlquilerCancha
-        }
-        
+	
+		/*Leer en la lista scrool*/
         JList<String> list;
         list = new JList<>();
         JScrollPane scrollPane = new JScrollPane(list);
@@ -323,7 +311,7 @@ public class VentanaI extends JFrame implements Archivos , Parametros {
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panelDerecha.add(lblNewLabel_2, BorderLayout.NORTH);
 		
-			
+		/*leer en listas */	
 		JList <String> list_binario  ;
 		list_binario=new JList();
 		list_binario.setBackground(new Color(255, 255, 255));
