@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/Ajedrez/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Ajedrez/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Examenes/Segundo examen/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Futbol/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Medallas/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/interfaces_graficas/elecciones/Elecciones/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/interfaces_graficas/primera_interfaz/interfaz1/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
