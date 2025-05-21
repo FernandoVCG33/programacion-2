@@ -50,7 +50,6 @@ public class Paciente extends Persona {
     @Override
     public String mostrarInformacion() {
         return super.mostrarInformacion() +
-               "\nEstado de Dientes: " + estado_dientes +
-               "\nSíntomas: " + sintomas;
+               "\nEstado de Dientes: " + estado_dientes + "\nSíntomas: " + sintomas;
     }
 }
