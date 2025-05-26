@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 // Creamos un paciente de prueba
-        Paciente paciente = new Paciente("Andres", "157896", "Masculino", 20 , "Dolor en la muela B2", "Dientes chuecos");
+        Paciente paciente = new Paciente("Joel", "15756", "Masculino", 25 , "Dolor en la muela A2", "Dientes rotos");
 
         // Creamos un odontólogo y lo autenticamos
         Odontologo od = new Odontologo("Rafael", "4542","Masculino", 45, "rafa_15", 45424);
