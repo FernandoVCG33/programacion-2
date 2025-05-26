@@ -15,13 +15,14 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 
 public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField text_usuario;
-	private JTextField text_password;
+	private JPasswordField text_password;
 
 	/**
 	 * Launch the application.
@@ -73,11 +74,6 @@ public class VentanaLogin extends JFrame {
 		lblNewLabel_2.setBounds(208, 188, 78, 13);
 		contentPane.add(lblNewLabel_2);
 		
-		text_password = new JTextField();
-		text_password.setBounds(208, 224, 204, 32);
-		contentPane.add(text_password);
-		text_password.setColumns(10);
-		
 		JButton btn_iniciar_secion = new JButton("Iniciar sesión");
 		btn_iniciar_secion.setBackground(new Color(255, 255, 255));
 		btn_iniciar_secion.setBounds(208, 291, 204, 25);
@@ -89,6 +85,8 @@ public class VentanaLogin extends JFrame {
 				String pass= text_password.getText() ;
 				if (name.equals("Juan") && pass.equals("12345")) {
 					JOptionPane.showMessageDialog(null, "Bienvenido");
+					Ventana_principal frame = new Ventana_principal();
+					frame.setVisible(true);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Contraseña o usuario incorrecta");
@@ -96,5 +94,9 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 		contentPane.add(btn_iniciar_secion);
+		
+		text_password = new JPasswordField();
+		text_password.setBounds(208, 224, 204, 35);
+		contentPane.add(text_password);
 	}
 }
