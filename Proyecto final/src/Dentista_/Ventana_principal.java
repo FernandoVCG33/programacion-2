@@ -11,6 +11,8 @@ import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JList;
 import javax.swing.ImageIcon;
@@ -62,9 +64,7 @@ public class Ventana_principal extends JFrame {
 		panecentral.setLayout(null);
 		
 
-		// Cargar imagen y añadirla al panel central
-		ImageIcon icon = new ImageIcon("imagenes/usuario.JPEG"); // Ruta relativa al proyecto
-		Image img = icon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+
 
 		
 		JLabel lblNewLabel_1 = new JLabel("Bienvenido doctor Juan !");
@@ -74,7 +74,17 @@ public class Ventana_principal extends JFrame {
 		
 		JButton btn_reg_p = new JButton("Registrar paciente");
 		btn_reg_p.setBounds(35, 143, 252, 351);
+		btn_reg_p.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ventana_reg_paciente frame = new Ventana_reg_paciente();
+				frame.setVisible(true);
+			}
+		});
 		panecentral.add(btn_reg_p);
+		
 		
 		JButton btn_mostrar_recetas = new JButton("ver recetas");
 		btn_mostrar_recetas.setBounds(350, 143, 274, 351);
