@@ -13,6 +13,8 @@ public class Main {
         System.out.println("--- Inicio de Sesión ---");
         if (od.getPassword()==45424) {
         	System.out.println("Bienvenido doc");
+        	VentanaLogin frame = new VentanaLogin();
+			frame.setVisible(true);
         }
         else {
         	System.out.println("contrase;a incorrecta");

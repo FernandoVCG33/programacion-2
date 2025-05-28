@@ -45,7 +45,7 @@ public class Ventana_principal extends JFrame {
 	 */
 	public Ventana_principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1050, 700);
+		setBounds(100, 100, 1002, 430);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,7 +73,7 @@ public class Ventana_principal extends JFrame {
 		panecentral.add(lblNewLabel_1);
 		
 		JButton btn_reg_p = new JButton("Registrar paciente");
-		btn_reg_p.setBounds(35, 143, 252, 351);
+		btn_reg_p.setBounds(35, 143, 185, 58);
 		btn_reg_p.addActionListener(new ActionListener() {
 			
 			@Override
@@ -87,11 +87,33 @@ public class Ventana_principal extends JFrame {
 		
 		
 		JButton btn_mostrar_recetas = new JButton("ver recetas");
-		btn_mostrar_recetas.setBounds(350, 143, 274, 351);
+		btn_mostrar_recetas.setBounds(354, 143, 195, 58);
 		panecentral.add(btn_mostrar_recetas);
 		
 		JButton btn_pagos = new JButton("Lista de  pagos");
-		btn_pagos.setBounds(769, 143, 227, 351);
+		btn_pagos.setBounds(676, 143, 259, 58);
 		panecentral.add(btn_pagos);
+		
+		JButton Mostrar_pacientes = new JButton("Mostrar pacientes");
+		Mostrar_pacientes.setBounds(35, 227, 185, 47);
+		Mostrar_pacientes.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ventana_ver_pacientes frame = new Ventana_ver_pacientes();
+                frame.setVisible(true);
+			}
+		});
+		Mostrar_pacientes.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ventana_ver_pacientes frame = new Ventana_ver_pacientes();
+				frame.setVisible(true);
+			}
+		});
+		panecentral.add(Mostrar_pacientes);
 	}
 }
