@@ -36,7 +36,7 @@ public class Persona {
 	}
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", ci=" + ci + ", sexo=" + sexo + ", edad=" + edad + "]";
+		return "Persona [nombre: " + nombre + ", ci=" + ci + ", sexo=" + sexo + ", edad=" + edad + "]";
 	}
 	public String mostrarInformacion() {
 		return getNombre() + getCi() + getEdad() + getSexo();

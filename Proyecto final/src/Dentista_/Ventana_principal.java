@@ -96,15 +96,7 @@ public class Ventana_principal extends JFrame {
 		
 		JButton Mostrar_pacientes = new JButton("Mostrar pacientes");
 		Mostrar_pacientes.setBounds(35, 227, 185, 47);
-		Mostrar_pacientes.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Ventana_ver_pacientes frame = new Ventana_ver_pacientes();
-                frame.setVisible(true);
-			}
-		});
+		
 		Mostrar_pacientes.addActionListener(new ActionListener() {
 			
 			@Override

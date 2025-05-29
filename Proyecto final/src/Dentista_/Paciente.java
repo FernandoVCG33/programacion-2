@@ -30,7 +30,7 @@ public class Paciente extends Persona  implements Archivos{
 	}
 	@Override
 	public String toString() {
-		return "Paciente [sintomas=" + sintomas + ", estado_dientes=" + estado_dientes + "]";
+		return "Paciente [sintomas: " + sintomas + ", estado_dientes: " + estado_dientes + "]";
 	}
     public void actualizarEstadoDientes(String nuevoEstado) {
         this.estado_dientes = nuevoEstado;
