@@ -35,7 +35,7 @@ public class Ventana_ver_pagos extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana_ver_pagos() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 605, 397);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));

@@ -86,12 +86,30 @@ public class Ventana_principal extends JFrame {
 		panecentral.add(btn_reg_p);
 		
 		
-		JButton btn_mostrar_recetas = new JButton("ver recetas");
+		JButton btn_mostrar_recetas = new JButton("Registrar receta");
 		btn_mostrar_recetas.setBounds(354, 143, 195, 58);
+		btn_mostrar_recetas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ven_reg_medicamentos frame = new Ven_reg_medicamentos();
+				frame.setVisible(true);
+			}
+		});
 		panecentral.add(btn_mostrar_recetas);
 		
 		JButton btn_pagos = new JButton("Lista de  pagos");
-		btn_pagos.setBounds(676, 143, 259, 58);
+		btn_pagos.setBounds(589, 149, 185, 47);
+		btn_pagos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ventana_ver_pagos frame = new Ventana_ver_pagos();
+				frame.setVisible(true);
+			}
+		});
 		panecentral.add(btn_pagos);
 		
 		JButton Mostrar_pacientes = new JButton("Mostrar pacientes");
@@ -107,5 +125,18 @@ public class Ventana_principal extends JFrame {
 			}
 		});
 		panecentral.add(Mostrar_pacientes);
+		
+		JButton btn_recetas = new JButton("Ver recetas");
+		btn_recetas.setBounds(354, 227, 185, 47);
+		btn_recetas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ven_ver_recetas frame = new Ven_ver_recetas();
+				frame.setVisible(true);
+			}
+		});
+		panecentral.add(btn_recetas);
 	}
 }

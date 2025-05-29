@@ -17,6 +17,7 @@ public class Ven_reg_medicamentos extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -38,7 +39,7 @@ public class Ven_reg_medicamentos extends JFrame {
 	 * Create the frame.
 	 */
 	public Ven_reg_medicamentos() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 618, 405);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(128, 0, 128));
@@ -50,7 +51,7 @@ public class Ven_reg_medicamentos extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Nombre del medicamento");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(160, 104, 198, 13);
+		lblNewLabel_1.setBounds(160, 137, 198, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Registro de medicamentos ");
@@ -61,14 +62,14 @@ public class Ven_reg_medicamentos extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(160, 127, 214, 39);
+		textField.setBounds(160, 160, 214, 39);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Fecha de caducidad");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setBounds(160, 192, 198, 13);
+		lblNewLabel_2.setBounds(160, 209, 198, 13);
 		contentPane.add(lblNewLabel_2);
 		
 		textField_1 = new JTextField();
@@ -83,5 +84,16 @@ public class Ven_reg_medicamentos extends JFrame {
 		JButton btn_cancelar = new JButton("Cancelar");
 		btn_cancelar.setBounds(290, 305, 85, 21);
 		contentPane.add(btn_cancelar);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(160, 88, 214, 39);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("Descripcion ");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setBounds(160, 52, 137, 26);
+		contentPane.add(lblNewLabel_3);
 	}
 }

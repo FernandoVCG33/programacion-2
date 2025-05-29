@@ -1,1 +1,2 @@
 Fernando Catacora;13371691;Masculino;21;Dolor en la muela B2;Careados 
+Antonio Vargas;1595436;Masculino;10;Dolor en las encias;Diente a1 roto
