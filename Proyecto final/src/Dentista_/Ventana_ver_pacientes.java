@@ -1,6 +1,5 @@
 package Dentista_;
 
-
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -14,24 +13,30 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Ventana_ver_pacientes extends JFrame {
+public class Ventana_ver_pacientes extends JFrame implements Archivos {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JList<String> lista_pacientes;
+    private JList<String> listaBIN;  // Corregido: declarado aquí como JList<String>
     private DefaultListModel<String> modeloLista;
+    private DefaultListModel<String> modeloListaBin;
 
     /**
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                Ventana_ver_pacientes frame = new Ventana_ver_pacientes();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Ventana_ver_pacientes frame = new Ventana_ver_pacientes();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -45,7 +50,6 @@ public class Ventana_ver_pacientes extends JFrame {
         contentPane = new JPanel();
         contentPane.setBackground(new Color(64, 128, 128));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
@@ -55,7 +59,7 @@ public class Ventana_ver_pacientes extends JFrame {
         contentPane.add(lblNewLabel);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 65, 743, 321);
+        scrollPane.setBounds(10, 65, 387, 321);
         contentPane.add(scrollPane);
 
         modeloLista = new DefaultListModel<>();
@@ -70,24 +74,58 @@ public class Ventana_ver_pacientes extends JFrame {
         btn_limpiar_p.setBounds(125, 397, 85, 21);
         contentPane.add(btn_limpiar_p);
 
-        // Acción del botón Mostrar: cargar y mostrar pacientes
-        btn_ver_pa.addActionListener(e -> mostrarPacientes());
+        JScrollPane scrollBin = new JScrollPane();
+        scrollBin.setBounds(424, 65, 349, 321);
+        contentPane.add(scrollBin);
 
-        // Acción del botón Limpiar: limpiar lista
-        btn_limpiar_p.addActionListener(e -> modeloLista.clear());
-    }
+        modeloListaBin = new DefaultListModel<>();
 
-    private void mostrarPacientes() {
-        modeloLista.clear(); // Limpiar antes de cargar
-        ArrayList<Paciente> pacientes = Paciente.leerDesdeArchivoTxt();
-        if (pacientes.isEmpty()) {
-            modeloLista.addElement("No hay pacientes registrados o el archivo no se encontró.");
-        } else {
-            for (Paciente p : pacientes) {
-                // Puedes usar p.toString() o p.generarHistoriaClinica()
-                modeloLista.addElement(p.generarHistoriaClinica());
-                modeloLista.addElement("--------------------------------------------------");
+        // CORREGIDO: asociar el modelo al JList
+        listaBIN = new JList<>(modeloListaBin);
+        scrollBin.setViewportView(listaBIN);
+
+        JButton Mostrar_bin = new JButton("Mostrar");
+        Mostrar_bin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                modeloListaBin.clear();
+                ArrayList<Paciente> pacientesBin = Paciente.leerBinario();
+
+                if (pacientesBin.isEmpty()) {
+                    modeloListaBin.addElement("No hay pacientes en binario o el archivo está vacío.");
+                } else {
+                    for (Paciente p : pacientesBin) {
+                        modeloListaBin.addElement(p.generarHistoriaClinica());
+                        modeloListaBin.addElement("--------------------------------------------------");
+                    }
+                }
             }
-        }
+        });
+
+        Mostrar_bin.setBounds(434, 397, 85, 21);
+        contentPane.add(Mostrar_bin);
+
+        // Botón Mostrar para archivo TXT
+        btn_ver_pa.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                modeloLista.clear();
+                ArrayList<Paciente> pacientes = Paciente.leerDesdeArchivoTxt();
+
+                if (pacientes.isEmpty()) {
+                    modeloLista.addElement("No hay pacientes registrados o el archivo no se encontró.");
+                } else {
+                    for (Paciente p : pacientes) {
+                        modeloLista.addElement(p.generarHistoriaClinica());
+                        modeloLista.addElement("--------------------------------------------------");
+                    }
+                }
+            }
+        });
+
+        // Botón Limpiar
+        btn_limpiar_p.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                modeloLista.clear();
+            }
+        });
     }
 }

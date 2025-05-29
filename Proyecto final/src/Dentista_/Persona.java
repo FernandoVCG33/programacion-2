@@ -1,6 +1,9 @@
 package Dentista_;
 
-public class Persona {
+import java.io.Serializable;
+
+public class Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String nombre, ci, sexo;
 	private int edad;
 	public Persona(String nombre, String ci, String sexo, int edad) {

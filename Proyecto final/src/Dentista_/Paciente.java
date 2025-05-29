@@ -1,13 +1,20 @@
 package Dentista_;
-
+import java.io.Serializable;
+	
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class Paciente extends Persona  implements Archivos{
+public class Paciente extends Persona  implements Archivos, Serializable{
+	 private static final long serialVersionUID = 1L;
 	private String sintomas ;
 	private String estado_dientes ;
 	
@@ -48,7 +55,7 @@ public class Paciente extends Persona  implements Archivos{
         return "Historia Clínica:\n" +
                "Paciente: " + getNombre() + "\n" +
                "CI: " + getCi() + "\n" +
-               "Edad: " + getSexo() + "\n" +
+               "Edad: " + getEdad() + "\n" +
                "Sexo: " + getSexo() + "\n" +
                "Síntomas: " + sintomas + "\n" +
                "Estado Dental: " + estado_dientes;
@@ -92,6 +99,31 @@ public class Paciente extends Persona  implements Archivos{
         }
 
         return lista;
-    
     }   
+    //
+    public static void registrarBinario(Paciente paciente) {
+        ArrayList<Paciente> lista = leerBinario(); // Leemos los pacientes actuales
+        lista.add(paciente); // Añadimos el nuevo
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Archivos.registroPacienteBins))) {
+            oos.writeObject(lista); // Guardamos la lista completa
+        } catch (IOException e) {
+            System.out.println("Error al registrar en binario: " + e.getMessage());
+        }
+    }
+    
+    public static ArrayList<Paciente> leerBinario() {
+        ArrayList<Paciente> lista = new ArrayList<>();
+
+        File archivo = new File(Archivos.registroPacienteBins);
+        if (!archivo.exists()) return lista; // Si no existe, retornamos lista vacía
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
+            lista = (ArrayList<Paciente>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error al leer archivo binario: " + e.getMessage());
+        }
+
+        return lista;
+    }
 }

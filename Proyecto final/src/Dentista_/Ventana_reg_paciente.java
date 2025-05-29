@@ -114,7 +114,7 @@ public class Ventana_reg_paciente extends JFrame {
 		text_estado.setColumns(10);
 		
 		JButton btn_reg_paciente = new JButton("Registrar");
-		btn_reg_paciente.setBounds(134, 464, 85, 21);
+		btn_reg_paciente.setBounds(134, 464, 101, 21);
 		content_pacientes.add(btn_reg_paciente);
 		btn_reg_paciente.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -134,7 +134,13 @@ public class Ventana_reg_paciente extends JFrame {
 				try {
 					int edad = Integer.parseInt(edadStr);
 					Paciente p = new Paciente(nombre, ci, sexo, edad, sintomas, estado);
-					p.registrarEnArchivoTxt();
+					if (sexo.equals("Masculino")) {
+						p.registrarEnArchivoTxt();
+					}
+					else {
+						Paciente.registrarBinario(p); 
+					}
+			
 					System.out.println("Paciente registrado con éxito.");
 					JOptionPane.showMessageDialog(null, "Paciente ya registrado");
 					// También podrías mostrar un JOptionPane si prefieres algo visual
