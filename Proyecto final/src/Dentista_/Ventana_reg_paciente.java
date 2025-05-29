@@ -134,7 +134,7 @@ public class Ventana_reg_paciente extends JFrame {
 				try {
 					int edad = Integer.parseInt(edadStr);
 					Paciente p = new Paciente(nombre, ci, sexo, edad, sintomas, estado);
-					if (sexo.equals("Masculino")) {
+					if (edad>18) {
 						p.registrarEnArchivoTxt();
 					}
 					else {

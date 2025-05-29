@@ -52,16 +52,18 @@ public class Ventana_principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Inicio");
+		lblNewLabel.setBounds(5, 5, 831, 40);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 33));
 		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+		contentPane.add(lblNewLabel);
 		
 		JPanel panecentral = new JPanel();
-		contentPane.add(panecentral, BorderLayout.CENTER);
+		panecentral.setBounds(5, 45, 831, 343);
+		contentPane.add(panecentral);
 		panecentral.setLayout(null);
 		
 
@@ -70,7 +72,7 @@ public class Ventana_principal extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Bienvenido doctor Juan !");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblNewLabel_1.setBounds(402, 24, 321, 67);
+		lblNewLabel_1.setBounds(285, 10, 321, 67);
 		panecentral.add(lblNewLabel_1);
 		
 		JButton btn_reg_p = new JButton("Registrar paciente");
@@ -149,5 +151,9 @@ public class Ventana_principal extends JFrame {
 		});
 		btnmospagos.setBounds(589, 227, 185, 47);
 		panecentral.add(btnmospagos);
+		
+		JButton btn_salir = new JButton("Salir");
+		btn_salir.setBounds(702, 14, 85, 21);
+		contentPane.add(btn_salir);
 	}
 }

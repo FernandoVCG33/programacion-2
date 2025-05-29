@@ -1,7 +1,2 @@
-Fernando Catacora;13371691;Masculino;21;Dolor en la muela B2;Careados 
-Antonio Vargas;1595436;Masculino;10;Dolor en las encias;Diente a1 roto
-Nataly Manjon;4531545;Femenino ;22;Dolor en las muelas de juicio;Carier profunda en la muela A5
-Carolina Vallejo;4521;Femenino;45;Dientes rotos;Caries 
-Carolina Varnare;46546;Femenino;45;Dolor en las encias;Rotos 
-Varane;4545;Femenino;49;Dolor;Rotos y podridos
-Jhon Ramos;654329;Masculino;87;Muelas podridas;Criticos
+Jhon Cac;46546;Masculino;25;Dientes sangrantes;Rotos
+Boris Perez;78945;Masculino;56;Encias sancgrantes;Normal

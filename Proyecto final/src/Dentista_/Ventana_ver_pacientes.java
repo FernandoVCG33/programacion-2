@@ -21,7 +21,7 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JList<String> lista_pacientes;
-    private JList<String> listaBIN;  // Corregido: declarado aquí como JList<String>
+    private JList<String> listaBIN;
     private DefaultListModel<String> modeloLista;
     private DefaultListModel<String> modeloListaBin;
 
@@ -46,7 +46,7 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
      */
     public Ventana_ver_pacientes() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 797, 465);
+        setBounds(100, 100, 926, 550);
         contentPane = new JPanel();
         contentPane.setBackground(new Color(64, 128, 128));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,30 +59,28 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
         contentPane.add(lblNewLabel);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 65, 387, 321);
+        scrollPane.setBounds(10, 105, 422, 352);
         contentPane.add(scrollPane);
 
         modeloLista = new DefaultListModel<>();
         lista_pacientes = new JList<>(modeloLista);
         scrollPane.setViewportView(lista_pacientes);
 
+        JScrollPane scrollBin = new JScrollPane();
+        scrollBin.setBounds(453, 105, 434, 352);
+        contentPane.add(scrollBin);
+
+        modeloListaBin = new DefaultListModel<>();  // Inicializado correctamente
+        listaBIN = new JList<>(modeloListaBin);
+        scrollBin.setViewportView(listaBIN);
+
         JButton btn_ver_pa = new JButton("Mostrar");
-        btn_ver_pa.setBounds(20, 397, 85, 21);
+        btn_ver_pa.setBounds(10, 467, 123, 36);
         contentPane.add(btn_ver_pa);
 
         JButton btn_limpiar_p = new JButton("Limpiar");
-        btn_limpiar_p.setBounds(125, 397, 85, 21);
+        btn_limpiar_p.setBounds(160, 467, 103, 36);
         contentPane.add(btn_limpiar_p);
-
-        JScrollPane scrollBin = new JScrollPane();
-        scrollBin.setBounds(424, 65, 349, 321);
-        contentPane.add(scrollBin);
-
-        modeloListaBin = new DefaultListModel<>();
-
-        // CORREGIDO: asociar el modelo al JList
-        listaBIN = new JList<>(modeloListaBin);
-        scrollBin.setViewportView(listaBIN);
 
         JButton Mostrar_bin = new JButton("Mostrar");
         Mostrar_bin.addActionListener(new ActionListener() {
@@ -100,11 +98,29 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
                 }
             }
         });
-
-        Mostrar_bin.setBounds(434, 397, 85, 21);
+        Mostrar_bin.setBounds(451, 467, 111, 36);
         contentPane.add(Mostrar_bin);
 
-        // Botón Mostrar para archivo TXT
+        JButton btn_limpiar_binario = new JButton("Limpiar");
+        btn_limpiar_binario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                modeloListaBin.clear();
+            }
+        });
+        btn_limpiar_binario.setBounds(598, 467, 103, 36);
+        contentPane.add(btn_limpiar_binario);
+
+        JLabel lblNewLabel_1 = new JLabel("Mayores de edad");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_1.setBounds(10, 74, 185, 21);
+        contentPane.add(lblNewLabel_1);
+
+        JLabel lblNewLabel_2 = new JLabel("Menores de edad");
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_2.setBounds(453, 74, 137, 21);
+        contentPane.add(lblNewLabel_2);
+
+        // Acción para botón Mostrar pacientes (TXT)
         btn_ver_pa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 modeloLista.clear();
@@ -121,7 +137,7 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
             }
         });
 
-        // Botón Limpiar
+        // Acción para botón Limpiar pacientes (TXT)
         btn_limpiar_p.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 modeloLista.clear();
