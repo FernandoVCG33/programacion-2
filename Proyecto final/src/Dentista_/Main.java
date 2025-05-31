@@ -17,7 +17,7 @@ public class Main {
 			frame.setVisible(true);
         }
         else {
-        	System.out.println("contrase;a incorrecta");
+        	System.out.println("contraseña incorrecta");
         }
 	}
 

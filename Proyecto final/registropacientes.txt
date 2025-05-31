@@ -1,2 +1,3 @@
 Jhon Cac;46546;Masculino;25;Dientes sangrantes;Rotos
 Boris Perez;78945;Masculino;56;Encias sancgrantes;Normal
+Tony vargas;78965;Masculino;24;Encias arruinadas;Caries en la muela B2
