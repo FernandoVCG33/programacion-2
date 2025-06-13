@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -154,6 +155,13 @@ public class Ventana_principal extends JFrame {
 		
 		JButton btn_salir = new JButton("Salir");
 		btn_salir.setBounds(702, 14, 85, 21);
+		btn_salir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Gracias por usar el sistema. ¡Hasta luego!");
+				System.exit(0);
+			}
+		});
 		contentPane.add(btn_salir);
+
 	}
 }

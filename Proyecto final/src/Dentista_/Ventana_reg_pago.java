@@ -1,27 +1,21 @@
 package Dentista_;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Ventana_reg_pago extends JFrame {
+public class Ventana_reg_pago extends JFrame implements Archivos {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textField;     // Monto
+	private JTextField textField_1;   // Método
+	private JTextField textField_2;   // Fecha (opcional visual, pero no usada)
+	private JTextArea textArea;       // Concepto
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,61 +29,107 @@ public class Ventana_reg_pago extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Ventana_reg_pago() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 568, 530);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Registrar pago");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		lblNewLabel.setBounds(213, 10, 293, 55);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Monto");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_1.setBounds(151, 110, 106, 20);
 		contentPane.add(lblNewLabel_1);
-		
+
 		textField = new JTextField();
 		textField.setBounds(151, 133, 227, 37);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Metodo de pago");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_2.setBounds(151, 180, 131, 20);
 		contentPane.add(lblNewLabel_2);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(151, 210, 227, 29);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Fecha");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_3.setBounds(151, 258, 106, 20);
 		contentPane.add(lblNewLabel_3);
-		
+
 		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setText(new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
 		textField_2.setBounds(151, 288, 227, 29);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Concepto");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_4.setBounds(151, 327, 183, 29);
 		contentPane.add(lblNewLabel_4);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(151, 366, 227, 117);
+
+		textArea = new JTextArea();
+		textArea.setBounds(151, 366, 227, 80);
 		contentPane.add(textArea);
+
+		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar.setBounds(151, 460, 100, 25);
+		contentPane.add(btnRegistrar);
+
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(278, 460, 100, 25);
+		contentPane.add(btnCancelar);
+
+		// Acción del botón "Registrar"
+		btnRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String montoTexto = textField.getText().trim();
+				String metodo = textField_1.getText().trim();
+				String concepto = textArea.getText().trim();
+
+				if (montoTexto.isEmpty() || metodo.isEmpty() || concepto.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
+					return;
+				}
+
+				try {
+					double monto = Double.parseDouble(montoTexto);
+					Pago p = new Pago(monto, metodo, concepto);
+					boolean guardado = p.registrarPagoTxt(Archivos.registroPagos);
+
+					if (guardado) {
+						JOptionPane.showMessageDialog(null, "Pago registrado correctamente.");
+						textField.setText("");
+						textField_1.setText("");
+						textArea.setText("");
+						textField_2.setText(new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
+					} else {
+						JOptionPane.showMessageDialog(null, "Error al registrar el pago.");
+					}
+
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "El monto debe ser un número válido.");
+				}
+			}
+		});
+
+		// Acción del botón "Cancelar"
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose(); // cierra la ventana
+			}
+		});
 	}
 }
