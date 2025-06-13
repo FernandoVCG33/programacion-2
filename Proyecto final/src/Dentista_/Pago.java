@@ -1,5 +1,11 @@
 package Dentista_;
+import java.util.ArrayList;
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 
 public class Pago {
@@ -64,4 +70,43 @@ public class Pago {
                "Método: " + metodo + "\n" +
                "Monto: $" + monto;
     }
+    public boolean registrarPagoTxt(String archivo) {
+        try {
+            PrintWriter escritor = new PrintWriter(new FileWriter(archivo, true));
+            String linea = this.monto + ";" + this.metodo + ";" + this.concepto + ";" + this.obtenerFechaFormateada();
+            escritor.println(linea);
+            escritor.close();
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
+    }
+    
+    public static ArrayList<Pago> leerPagosDesdeTxt(String archivo) {
+        ArrayList<Pago> lista = new ArrayList<>();
+
+        try {
+            BufferedReader lector = new BufferedReader(new FileReader(archivo));
+            String linea;
+
+            while ((linea = lector.readLine()) != null) {
+                String[] partes = linea.split(";");
+                if (partes.length == 4) {
+                    double monto = Double.parseDouble(partes[0]);
+                    String metodo = partes[1];
+                    String concepto = partes[2];
+                    // La fecha no se guarda realmente porque usamos la actual
+                    Pago p = new Pago(monto, metodo, concepto);
+                    lista.add(p);
+                }
+            }
+
+            lector.close();
+        } catch (IOException e) {
+            // manejo simple, como lo pide la universidad
+        }
+
+        return lista;
+    }
+
 }
