@@ -36,7 +36,7 @@ public class Ven_reg_medicamentos extends JFrame implements Archivos {
      */
     public Ven_reg_medicamentos() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 560, 405);
+        setBounds(500, 100, 560, 405);
         contentPane = new JPanel();
         contentPane.setBackground(new Color(0, 128, 192));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
