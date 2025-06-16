@@ -51,15 +51,20 @@ public class Paciente extends Persona  implements Archivos, Serializable{
         }
     }
 
-    public String generarHistoriaClinica() {
-        return "Historia Clínica:\n" +
-               "Paciente: " + getNombre() + "\n" +
-               "CI: " + getCi() + "\n" +
-               "Edad: " + getEdad() + "\n" +
-               "Sexo: " + getSexo() + "\n" +
-               "Síntomas: " + sintomas + "\n" +
-               "Estado Dental: " + estado_dientes;
-    }
+ 
+    @Override
+	public String mostrarInformacion() {
+		
+		return "Historia Clínica:\n" +
+	               "Paciente: " + getNombre() + "\n" +
+	               "CI: " + getCi() + "\n" +
+	               "Edad: " + getEdad() + "\n" +
+	               "Sexo: " + getSexo() + "\n" +
+	               "Síntomas: " + sintomas + "\n" +
+	               "Estado Dental: " + estado_dientes;
+	}
+    
+    
     public void registrarEnArchivoTxt() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(Archivos.registroPacientes, true))) {
             String linea = getNombre() + ";" +
@@ -127,9 +132,5 @@ public class Paciente extends Persona  implements Archivos, Serializable{
         return lista;
     }
 
-	@Override
-	public String mostrarInformacion() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

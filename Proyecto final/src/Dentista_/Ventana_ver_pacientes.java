@@ -122,7 +122,7 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
                     modeloLista.addElement("No hay pacientes registrados o el archivo no se encontró.");
                 } else {
                     for (Paciente p : pacientes) {
-                        modeloLista.addElement(p.generarHistoriaClinica());
+                        modeloLista.addElement(p.mostrarInformacion());
                         modeloLista.addElement("--------------------------------------------------");
                     }
                 }
@@ -146,7 +146,7 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
                     modeloListaBin.addElement("No hay pacientes en binario o el archivo está vacío.");
                 } else {
                     for (Paciente p : pacientesBin) {
-                        modeloListaBin.addElement(p.generarHistoriaClinica());
+                        modeloListaBin.addElement(p.mostrarInformacion());
                         modeloListaBin.addElement("--------------------------------------------------");
                     }
                 }
