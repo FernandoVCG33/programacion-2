@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 public class Ventana_reg_paciente extends JFrame {
 
@@ -46,8 +47,9 @@ public class Ventana_reg_paciente extends JFrame {
 	 */
 	public Ventana_reg_paciente() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 579, 526);
+		setBounds(500, 100, 579, 546);
 		content_pacientes = new JPanel();
+		content_pacientes.setBackground(new Color(0, 128, 192));
 		content_pacientes.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(content_pacientes);
@@ -56,7 +58,7 @@ public class Ventana_reg_paciente extends JFrame {
 		JLabel lblNewLabel = new JLabel("Registro de pacientes");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(213, 24, 223, 65);
+		lblNewLabel.setBounds(179, 10, 223, 65);
 		content_pacientes.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
@@ -64,57 +66,58 @@ public class Ventana_reg_paciente extends JFrame {
 		content_pacientes.add(lblNewLabel_1);
 		
 		text_nombre = new JTextField();
-		text_nombre.setBounds(190, 121, 181, 26);
+		text_nombre.setBounds(190, 107, 181, 26);
 		content_pacientes.add(text_nombre);
 		text_nombre.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("CI");
-		lblNewLabel_2.setBounds(190, 157, 45, 13);
+		lblNewLabel_2.setBounds(190, 143, 45, 13);
 		content_pacientes.add(lblNewLabel_2);
 		
 		text_ci = new JTextField();
-		text_ci.setBounds(190, 180, 181, 26);
+		text_ci.setBounds(190, 166, 181, 26);
 		content_pacientes.add(text_ci);
 		text_ci.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Sexo");
-		lblNewLabel_3.setBounds(190, 216, 45, 13);
+		lblNewLabel_3.setBounds(190, 202, 45, 13);
 		content_pacientes.add(lblNewLabel_3);
 		
 		text_sexo = new JTextField();
-		text_sexo.setBounds(190, 239, 181, 26);
+		text_sexo.setBounds(190, 225, 181, 26);
 		content_pacientes.add(text_sexo);
 		text_sexo.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Edad");
-		lblNewLabel_4.setBounds(190, 275, 45, 13);
+		lblNewLabel_4.setBounds(190, 261, 45, 13);
 		content_pacientes.add(lblNewLabel_4);
 		
 		text_edad = new JTextField();
-		text_edad.setBounds(190, 298, 181, 26);
+		text_edad.setBounds(190, 284, 181, 26);
 		content_pacientes.add(text_edad);
 		text_edad.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Sintomas");
-		lblNewLabel_5.setBounds(190, 346, 118, 13);
+		lblNewLabel_5.setBounds(190, 320, 118, 13);
 		content_pacientes.add(lblNewLabel_5);
 		
 		text_sintomas = new JTextField();
-		text_sintomas.setBounds(190, 369, 181, 26);
+		text_sintomas.setBounds(190, 343, 181, 26);
 		content_pacientes.add(text_sintomas);
 		text_sintomas.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Estado de dientes");
-		lblNewLabel_6.setBounds(190, 405, 102, 13);
+		lblNewLabel_6.setBounds(190, 379, 102, 13);
 		content_pacientes.add(lblNewLabel_6);
 		
 		text_estado = new JTextField();
-		text_estado.setBounds(190, 428, 181, 26);
+		text_estado.setBounds(190, 402, 181, 26);
 		content_pacientes.add(text_estado);
 		text_estado.setColumns(10);
 		
 		JButton btn_reg_paciente = new JButton("Registrar");
-		btn_reg_paciente.setBounds(134, 464, 101, 21);
+		btn_reg_paciente.setBackground(new Color(192, 192, 192));
+		btn_reg_paciente.setBounds(179, 447, 101, 38);
 		content_pacientes.add(btn_reg_paciente);
 		btn_reg_paciente.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -151,7 +154,8 @@ public class Ventana_reg_paciente extends JFrame {
 		});
 		
 		JButton btn_limpiar_paciente = new JButton("Limpiar");
-		btn_limpiar_paciente.setBounds(302, 464, 85, 21);
+		btn_limpiar_paciente.setBackground(new Color(192, 192, 192));
+		btn_limpiar_paciente.setBounds(302, 447, 100, 38);
 		btn_limpiar_paciente.addActionListener(new ActionListener() {
 			
 			@Override

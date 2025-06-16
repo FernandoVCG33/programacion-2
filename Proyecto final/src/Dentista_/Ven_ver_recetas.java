@@ -37,14 +37,15 @@ public class Ven_ver_recetas extends JFrame {
      */
     public Ven_ver_recetas() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 773, 456);
+        setBounds(400, 100, 773, 456);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(64, 128, 128));
+        contentPane.setBackground(new Color(0, 128, 192));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         JLabel lblNewLabel = new JLabel("Registro de recetas");
+        lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(247, 10, 259, 72);
         contentPane.add(lblNewLabel);
@@ -58,10 +59,13 @@ public class Ven_ver_recetas extends JFrame {
         scrollPane.setViewportView(lista_recetas);
 
         JButton btnmos = new JButton("Mostrar");
+        btnmos.setBackground(new Color(192, 192, 192));
+        btnmos.setForeground(new Color(0, 0, 0));
         btnmos.setBounds(153, 353, 187, 42);
         contentPane.add(btnmos);
 
         JButton btnlimpiar = new JButton("Limpiar");
+        btnlimpiar.setBackground(new Color(255, 128, 0));
         btnlimpiar.setBounds(388, 353, 163, 42);
         contentPane.add(btnlimpiar);
 

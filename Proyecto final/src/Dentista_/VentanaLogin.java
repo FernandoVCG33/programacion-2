@@ -48,7 +48,7 @@ public class VentanaLogin extends JFrame {
 		setResizable(false);
 		setBounds(500, 200, 650, 400);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(64, 128, 128));
+		contentPane.setBackground(new Color(0, 128, 192));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -75,7 +75,7 @@ public class VentanaLogin extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btn_iniciar_secion = new JButton("Iniciar sesión");
-		btn_iniciar_secion.setBackground(new Color(255, 255, 255));
+		btn_iniciar_secion.setBackground(new Color(192, 192, 192));
 		btn_iniciar_secion.setBounds(208, 291, 204, 25);
 		btn_iniciar_secion.addActionListener(new ActionListener() {
 			@Override

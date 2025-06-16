@@ -46,9 +46,9 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
      */
     public Ventana_ver_pacientes() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 926, 550);
+        setBounds(400, 100, 926, 550);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(64, 128, 128));
+        contentPane.setBackground(new Color(0, 128, 192));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -75,14 +75,17 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
         scrollBin.setViewportView(listaBIN);
 
         JButton btn_ver_pa = new JButton("Mostrar");
+        btn_ver_pa.setBackground(new Color(192, 192, 192));
         btn_ver_pa.setBounds(10, 467, 123, 36);
         contentPane.add(btn_ver_pa);
 
         JButton btn_limpiar_p = new JButton("Limpiar");
+        btn_limpiar_p.setBackground(new Color(255, 128, 64));
         btn_limpiar_p.setBounds(160, 467, 103, 36);
         contentPane.add(btn_limpiar_p);
 
         JButton Mostrar_bin = new JButton("Mostrar");
+        Mostrar_bin.setBackground(new Color(192, 192, 192));
         Mostrar_bin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 modeloListaBin.clear();
@@ -102,6 +105,7 @@ public class Ventana_ver_pacientes extends JFrame implements Archivos {
         contentPane.add(Mostrar_bin);
 
         JButton btn_limpiar_binario = new JButton("Limpiar");
+        btn_limpiar_binario.setBackground(new Color(255, 128, 64));
         btn_limpiar_binario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 modeloListaBin.clear();

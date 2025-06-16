@@ -36,16 +36,16 @@ public class Ven_reg_medicamentos extends JFrame implements Archivos {
      */
     public Ven_reg_medicamentos() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 618, 405);
+        setBounds(100, 100, 560, 405);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(128, 0, 128));
+        contentPane.setBackground(new Color(0, 128, 192));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         JLabel lblTitulo = new JLabel("Registro de medicamentos ");
-        lblTitulo.setBounds(169, 10, 315, 32);
+        lblTitulo.setBounds(113, 10, 315, 32);
         lblTitulo.setBackground(Color.WHITE);
         lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 26));
         lblTitulo.setForeground(Color.WHITE);
@@ -87,10 +87,12 @@ public class Ven_reg_medicamentos extends JFrame implements Archivos {
         txtFecha.setText(new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())); // Mostrar fecha actual
 
         JButton btn_reg_med = new JButton("Registrar");
+        btn_reg_med.setBackground(new Color(192, 192, 192));
         btn_reg_med.setBounds(160, 305, 101, 21);
         contentPane.add(btn_reg_med);
 
         JButton btn_cancelar = new JButton("Cancelar");
+        btn_cancelar.setBackground(new Color(192, 192, 192));
         btn_cancelar.setBounds(290, 305, 85, 21);
         contentPane.add(btn_cancelar);
 

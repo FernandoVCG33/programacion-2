@@ -31,25 +31,25 @@ public class Ventana_reg_pago extends JFrame implements Archivos {
 
 	public Ventana_reg_pago() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 568, 530);
+		setBounds(500, 100, 568, 559);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(64, 128, 128));
+		contentPane.setBackground(new Color(0, 128, 192));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Registrar pago");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblNewLabel.setBounds(213, 10, 293, 55);
+		lblNewLabel.setBounds(185, 10, 237, 55);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Monto");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(151, 110, 106, 20);
+		lblNewLabel_1.setBounds(151, 95, 106, 20);
 		contentPane.add(lblNewLabel_1);
 
 		textField = new JTextField();
-		textField.setBounds(151, 133, 227, 37);
+		textField.setBounds(151, 125, 227, 37);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
@@ -59,7 +59,7 @@ public class Ventana_reg_pago extends JFrame implements Archivos {
 		contentPane.add(lblNewLabel_2);
 
 		textField_1 = new JTextField();
-		textField_1.setBounds(151, 210, 227, 29);
+		textField_1.setBounds(151, 211, 227, 37);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 
@@ -71,7 +71,7 @@ public class Ventana_reg_pago extends JFrame implements Archivos {
 		textField_2 = new JTextField();
 		textField_2.setEditable(false);
 		textField_2.setText(new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
-		textField_2.setBounds(151, 288, 227, 29);
+		textField_2.setBounds(151, 288, 227, 37);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 
@@ -81,15 +81,17 @@ public class Ventana_reg_pago extends JFrame implements Archivos {
 		contentPane.add(lblNewLabel_4);
 
 		textArea = new JTextArea();
-		textArea.setBounds(151, 366, 227, 80);
+		textArea.setBounds(151, 366, 227, 111);
 		contentPane.add(textArea);
 
 		JButton btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setBounds(151, 460, 100, 25);
+		btnRegistrar.setBackground(new Color(192, 192, 192));
+		btnRegistrar.setBounds(151, 487, 100, 25);
 		contentPane.add(btnRegistrar);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(278, 460, 100, 25);
+		btnCancelar.setBackground(new Color(255, 128, 0));
+		btnCancelar.setBounds(278, 487, 100, 25);
 		contentPane.add(btnCancelar);
 
 		// Acción del botón "Registrar"
