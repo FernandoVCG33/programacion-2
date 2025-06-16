@@ -153,7 +153,6 @@ public class Ventana_principal extends JFrame {
 			}
 		});
 		panecentral.add(btn_recetas);
-		
 		JButton btnmospagos = new JButton("Mostrar pagos");
 		btnmospagos.setBackground(new Color(255, 128, 64));
 		btnmospagos.addActionListener(new ActionListener() {
