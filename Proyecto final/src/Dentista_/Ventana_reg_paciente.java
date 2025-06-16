@@ -141,7 +141,7 @@ public class Ventana_reg_paciente extends JFrame {
 						p.registrarEnArchivoTxt();
 					}
 					else {
-						Paciente.registrarBinario(p); 
+						Paciente.registrarBinario(p);; 
 					}
 			
 					System.out.println("Paciente registrado con éxito.");

@@ -135,7 +135,7 @@ public class Ventana_principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Ventana_ver_pacientes frame = new Ventana_ver_pacientes();
-				frame.setVisible(true);
+                frame.setVisible(true);
 			}
 		});
 		panecentral.add(Mostrar_pacientes);

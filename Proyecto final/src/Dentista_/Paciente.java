@@ -126,4 +126,10 @@ public class Paciente extends Persona  implements Archivos, Serializable{
 
         return lista;
     }
+
+	@Override
+	public String mostrarInformacion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

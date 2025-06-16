@@ -29,4 +29,9 @@ public class Odontologo extends Persona {
 		        System.out.println("El odontólogo " + getNombre() +
 		            " atendió al paciente " + p.getNombre());
 		    }
+		@Override
+		public String mostrarInformacion() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

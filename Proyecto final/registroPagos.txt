@@ -1,1 +1,4 @@
 150.0;Tarjeta;Atencion genral;13/06/2025
+150.0;QR;atencion general;16/06/2025
+123.0;QR;Cirugia previa;16/06/2025
+69.0;Tarjeta;pagos x servicio;16/06/2025
